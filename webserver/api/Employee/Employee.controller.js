@@ -70,6 +70,22 @@ controller.GetData=function(req,res){
                }
       });
     }
+    controller.updateData = function functionName(req, res) {
+      employees.findOneAndUpdate({Employee_ID: req.body.empID}, {$set:{
+        Booking_Count: req.body.bookingCount,
+        'Vehicle_Info.Vehicle_Number': req.body.vehNo,
+        'Vehicle_Info.Vehicle_Type': req.body.vehType,
+        'Slot_Info.City': req.body.city,
+        'Slot_Info.Office': req.body.office,
+        'Slot_Info.Tower': req.body.tower,
+        'Slot_Info.Slot_Name': req.body.slotName
+      }}, {new: true}, function(err, doc){
+          if(err){
+                console.log("Something wrong when updating data!");
+          }
+                console.log(doc);
+        });
+    }
 exports = module.exports = controller;
 
 // db.empdetails.insert({

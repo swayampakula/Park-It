@@ -7,6 +7,7 @@ console.log('new update');
 // router.get('/:parameter', EmployeeController.getallEmp);
 router.post('/login',EmployeeController.LoginData);
 router.get('/',EmployeeController.GetData);
+router.put('/',EmployeeController.updateData);
 router.get('/search/:empID',EmployeeController.GetDataByEmployeeID)
 router.get('/vehSearch/:vehNo',EmployeeController.GetDataByvehNo)
 router.get('/slotSearch/:City/:Office/:Tower/:Slot_Name',EmployeeController.GetDataBySlotNo)
