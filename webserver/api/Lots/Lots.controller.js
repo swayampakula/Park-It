@@ -29,11 +29,12 @@ controller.getLot=function(req,res){
     });
   }
   controller.getOffices=function(req,res){
-  lots.findOne({City:req.params.city}).exec(function(err,data){
+  lots.find({City:req.params.city}).exec(function(err,data){
+    console.log(data);
            if(data){
              var offArr = []
              for (var i = 0; i < data.length; i++) {
-               offArr = data[i].Office
+               offArr.push(data[i].Office)
              }
              res.send(offArr);
            }
