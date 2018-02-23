@@ -36,7 +36,7 @@ controller.GetData=function(req,res){
       var d= req.params.empID;
       employees.findOne({Employee_ID:d}).exec(function(err,data){
                if(data){
-                 res.send({message:'Success'});
+                 res.send(data);
                }
                else{
                res.send({message:'fail'});
@@ -44,25 +44,38 @@ controller.GetData=function(req,res){
       });
     }
 
+    controller.GetDataByvehNo=function(req,res){
+      console.log('into GetDataByVehID')
+      var d= req.params.vehNo;
+      console.log(d);
+      employees.findOne({"Vehicle_Info.Vehicle_Number":d}).exec(function(err,data){
+               if(data){
+                 res.send(data);
+               }
+               else{
+               res.send({message:'fail'});
+               }
+      });
+    }
 
 exports = module.exports = controller;
 
 // db.empdetails.insert({
-//   "Employee_ID":'353444',
-//   "Employee_Name":'Ramesh',
-//   "Employee_Email":'ramesh.n63@wipro.com',
-//   "Role":'Admin',
-//   "password":'ramesh@123',
+//   "Employee_ID":'1234',
+//   "Employee_Name":'Naresh',
+//   "Employee_Email":'naresh.n63@wipro.com',
+//   "Role":'User',
+//   "password":'naresh@123',
 //   "Booking_Count": 0,
 //   "Vehicle_Info": {
-//     "Vehicle_Number": '',
-//     "Vehicle_Type": ''
+//     "Vehicle_Number": 'KA123',
+//     "Vehicle_Type": 'two'
 //   },
 //   "Slot_Info": {
-//     "City":'',
-//     "Office":'',
-//     "Tower":'',
-//     "Slot_Name" : ''
+//     "City":'Bangalore',
+//     "Office":'EC',
+//     "Tower":'EC3_t8',
+//     "Slot_Name" : '1'
 //   }
 // })
 

@@ -8,6 +8,8 @@ console.log('new update');
 router.post('/login',EmployeeController.LoginData);
 router.get('/',EmployeeController.GetData);
 router.get('/search/:empID',EmployeeController.GetDataByEmployeeID)
+router.get('/vehSearch/:vehNo',EmployeeController.GetDataByvehNo)
+
 // put(BCount, vInfo, slotInfo)
 // router.put('/',jobController.updatestatus);
 // router.delete('/:_id',roleSettingController.removeRole);
