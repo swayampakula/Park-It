@@ -86,6 +86,62 @@ controller.getLot=function(req,res){
     })
 
 }
+controller.updateOldLots = function functionName(req, res) {
+
+  lots.findOne({City: req.body.oldcity,Tower: req.body.oldtower,Office: req.body.oldoffice}).exec(function(err,data){
+           if(data){
+             console.log(data);
+             for (var i = 0; i < data.Slot_Info.length; i++) {
+               if(data.Slot_Info[i].Slot_Name == req.body.oldslotName){
+                 console.log(data.Slot_Info[i]);
+                 // res.send(data.Slot_Info[i].Slot_Status);
+                 var ob = {}
+                 ob['Slot_Info.'+i+'.Slot_Status']="Free"
+                 lots.findOneAndUpdate({City: req.body.oldcity,Tower: req.body.oldtower,Office: req.body.oldoffice}, {$set:ob}, {new: true}, function(err, doc){
+                     if(err){
+                           console.log("Something wrong when updating data!");
+                     }
+                           console.log(doc);
+                   });
+               }
+             }
+
+           }
+           else{
+             console.log(data);
+             console.log(err);
+           res.send({message:'fail'});
+           }
+  });
+}
+controller.updateNewLots = function functionName(req, res) {
+
+  lots.findOne({City: req.body.newcity,Tower: req.body.newtower,Office: req.body.newoffice}).exec(function(err,data){
+           if(data){
+             console.log(data);
+             for (var i = 0; i < data.Slot_Info.length; i++) {
+               if(data.Slot_Info[i].Slot_Name == req.body.newslotName){
+                 console.log(data.Slot_Info[i]);
+                 // res.send(data.Slot_Info[i].Slot_Status);
+                 var ob = {}
+                 ob['Slot_Info.'+i+'.Slot_Status']="Booked"
+                 lots.findOneAndUpdate({City: req.body.newcity,Tower: req.body.newtower,Office: req.body.newoffice}, {$set:ob}, {new: true}, function(err, doc){
+                     if(err){
+                           console.log("Something wrong when updating data!");
+                     }
+                           console.log(doc);
+                   });
+               }
+             }
+
+           }
+           else{
+             console.log(data);
+             console.log(err);
+           res.send({message:'fail'});
+           }
+  });
+}
 exports = module.exports = controller;
 // db.lotDetails.insert(
 // {

@@ -6,9 +6,12 @@ console.log('new update');
  //router.get('/',LotsController.getLotsData);
 router.get('/:city/:office/:tower/:vehicleType', LotsController.getLot);
 router.get('/', LotsController.getCities);
-router.post('/', LotsController.addLots);
+router.get('/', LotsController.addLots);
 router.get('/:city', LotsController.getOffices);
 router.get('/:city/:office', LotsController.getTowers);
+router.put('/', LotsController.updateOldLots);
+router.put('/', LotsController.updateNewLots);
+
 // router.put('/:SlotName', LotsController.updateLots);
 
 
