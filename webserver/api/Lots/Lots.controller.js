@@ -16,20 +16,21 @@ controller.getLot=function(req,res){
        });
   }
   controller.getCities=function(req,res){
-    lots.find((err, data) => {
-    // Note that this error doesn't mean nothing was found,
-    // it means the database had an error while searching, hence the 500 status
-    if (err) return res.status(500).send(err)
-    // send the list of all people
-    return res.status(200).send(data.City);
-});
+    console.log("inside get");
+      lots.find({}, function(err, data) {
+        console.log("inside get1");
 
+        console.log();
+        if (!err){
+          res.send(data[0].City);
+        } else {throw err;}
+    });
   }
   controller.getOffices=function(req,res){
   lots.findOne({City:req.params.city}).exec(function(err,data){
           console.log(data);
            if(data){
-             res.send(data.Office);
+             res.send(data[0].Office);
            }
            else{
            res.send({message:'fail'});
@@ -40,14 +41,64 @@ controller.getLot=function(req,res){
   lots.findOne({City:req.params.city, Office:req.params.office}).exec(function(err,data){
           console.log(data);
            if(data){
-             res.send(data.Tower);
+             res.send(data[0].Tower);
            }
            else{
              res.send({message:'fail'});
            }
        });
   }
+  controller.addLots=function(req,res)
+  {
+    var data =
+  {
+    "City":"Bangalore",
+  "Office": "EC",
+  "Tower":"EC3_T8",
+  "Slot_Size": 2,
+  "Slot_Info":[
+    {
+      "Slot_Name" : "1",
+      "Slot_Status": "Free",
+      "Slot_Type": "two"
+    },
+    {
+      "Slot_Name" : "2",
+      "Slot_Status": "Free",
+      "Slot_Type": "four"
+    }
+  ]
+}
+    console.log("In Side");
+    var nLot = new lots(data)
+    nLot.save(function (err) {
+      res.send(err);
+    })
+
+}
 exports = module.exports = controller;
+// db.lotDetails.insert(
+// {
+// "City":"Bangalore",
+// "Office": "EC",
+// "Tower":"EC3_T8",
+// "Slot_Size": 2,
+// "Slot_Info":[
+//   {
+//     "Slot_Name" : "1",
+//     "Slot_Status": "Free",
+//     "Slot_Type": "two"
+//   },
+//   {
+//     "Slot_Name" : "2",
+//     "Slot_Status": "Free",
+//     "Slot_Type": "four"
+//   }
+// ]
+// });
+
+
+
 
 
 

@@ -8,12 +8,12 @@ var empDetailsSchema = new mongoose.Schema({
     Employee_Name:String,
     Employee_Email:String,
     Role:String,
-    password:Password,
+    password:String,
     Booking_Count: Number,
     Vehicle_Info: {
       Vehicle_Number: String,
       Vehicle_Type: String
-    }
+    },
     Slot_Info: {
       City:String,
       Office:String,

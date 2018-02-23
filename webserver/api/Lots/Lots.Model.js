@@ -4,9 +4,9 @@ mongoose.connect('mongodb://localhost:27017/ParkItDB');
 
 var lotDetailsSchema = new mongoose.Schema({
 
-    City:[String],
-    Office:[String],
-    Tower:[String],
+    City: String,
+    Office:String,
+    Tower: String,
     Slot_Size: Number,
     Slot_Info:[
       {
@@ -18,6 +18,6 @@ var lotDetailsSchema = new mongoose.Schema({
 
 });
 
-var lotDetails = mongoose.model('lotDetails', lotDetailsSchema);
+var lotDetails = mongoose.model('lotdetails', lotDetailsSchema);
 
 exports = module.exports = lotDetails;

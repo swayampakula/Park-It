@@ -2,34 +2,24 @@ var controller={};
 var employees=require('./Employee.Model');
 
 controller.GetData=function(req,res){
-  var d= req.body.empID;
-  var e=req.body.password;
-  employees.findOne().exec(function(err,data){
-          console.log(data);
-           if(data){
-             if(data.Role == "Admin")
-             res.send({message:'Admin'});
-             else {
-               res.send({message:'Employee'});
-             }
-           }
-           else{
-           res.send({message:'fail'});
-           }
-
-       });
+  employees.find({}, function(err, data) {
+    if (!err){
+      res.send(data);
+    } else {throw err;}
+});
   }
 
-  controller.GetData=function(req,res){
+  controller.LoginData=function(req,res){
     var d= req.body.empID;
     var e=req.body.password;
-    console.log("userId: "+d+" password: "+e);
+    console.log(req.body.empID);
     //var flag=0;
     employees.findOne({Employee_ID:d,password:e}).exec(function(err,data){
-            console.log(data);
              if(data){
                if(data.Role == "Admin")
+                {
                res.send({message:'Admin'});
+                }
                else {
                  res.send({message:'Employee'});
                }
@@ -44,11 +34,11 @@ controller.GetData=function(req,res){
 exports = module.exports = controller;
 
 // db.empdetails.insert({
-//   "Employee_ID":'351944',
-//   "Employee_Name":'Nithin',
-//   "Employee_Email":'nithin.m681@wipro.com',
-//   "Role":'User',
-//   "password":'nithin@123',
+//   "Employee_ID":'353444',
+//   "Employee_Name":'Ramesh',
+//   "Employee_Email":'ramesh.n63@wipro.com',
+//   "Role":'Admin',
+//   "password":'ramesh@123',
 //   "Booking_Count": 0,
 //   "Vehicle_Info": {
 //     "Vehicle_Number": '',

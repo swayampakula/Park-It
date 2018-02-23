@@ -6,8 +6,8 @@ var mongoose = require('mongoose');
 var webpackDevMiddleware = require('webpack-dev-middleware');
 var webpackHotMiddleware = require('webpack-hot-middleware');
 var config = require('./webpack.config');
-var index = require('./webserver/routes/index');
-var users = require('./webserver/routes/users');
+var employee = require('./webserver/api/Employee/Employee.router');
+var lots = require('./webserver/api/Lots/Lots.router');
 var app = express();
 var compiler = webpack(config);
 
@@ -29,8 +29,8 @@ db.once('open', function() {
 
 
 //Ruotes
-app.use('/', index);
-app.use('/stream',users);
+app.use('/employee', employee);
+app.use('/lots',lots);
 
 
 app.use(webpackDevMiddleware(compiler, {

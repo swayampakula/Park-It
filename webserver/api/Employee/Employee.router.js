@@ -5,7 +5,7 @@ console.log('new update');
 // // router.post('/',roleSettingController.createRole);
  //router.get('/',EmployeeController.getEmployeeData);
 // router.get('/:parameter', EmployeeController.getallEmp);
-router.post('/',EmployeeController.LoginData);
+router.post('/login',EmployeeController.LoginData);
 router.get('/',EmployeeController.GetData);
 // put(BCount, vInfo, slotInfo)
 // router.put('/',jobController.updatestatus);
