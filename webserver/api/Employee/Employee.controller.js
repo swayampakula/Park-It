@@ -57,7 +57,19 @@ controller.GetData=function(req,res){
                }
       });
     }
-
+    controller.GetDataBySlotNo=function(req,res){
+      console.log('into GetDataBySlotNo')
+      const {City,Office,Tower,Slot_Name} = req.params;
+      // console.log(d);
+      employees.findOne({"Slot_Info.City":City,"Slot_Info.Office":Office,"Slot_Info.Tower":Tower,"Slot_Info.Slot_Name":Slot_Name,}).exec(function(err,data){
+               if(data){
+                 res.send(data);
+               }
+               else{
+               res.send({message:'fail'});
+               }
+      });
+    }
 exports = module.exports = controller;
 
 // db.empdetails.insert({

@@ -9,6 +9,7 @@ router.post('/login',EmployeeController.LoginData);
 router.get('/',EmployeeController.GetData);
 router.get('/search/:empID',EmployeeController.GetDataByEmployeeID)
 router.get('/vehSearch/:vehNo',EmployeeController.GetDataByvehNo)
+router.get('/slotSearch/:City/:Office/:Tower/:Slot_Name',EmployeeController.GetDataBySlotNo)
 
 // put(BCount, vInfo, slotInfo)
 // router.put('/',jobController.updatestatus);
