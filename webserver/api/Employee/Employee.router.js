@@ -7,6 +7,7 @@ console.log('new update');
 // router.get('/:parameter', EmployeeController.getallEmp);
 router.post('/login',EmployeeController.LoginData);
 router.get('/',EmployeeController.GetData);
+router.get('/search/:empID',EmployeeController.GetDataByEmployeeID)
 // put(BCount, vInfo, slotInfo)
 // router.put('/',jobController.updatestatus);
 // router.delete('/:_id',roleSettingController.removeRole);

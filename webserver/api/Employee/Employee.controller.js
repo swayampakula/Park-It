@@ -31,6 +31,20 @@ controller.GetData=function(req,res){
          });
     }
 
+    controller.GetDataByEmployeeID=function(req,res){
+      console.log('into GetDataByEmployeeID')
+      var d= req.params.empID;
+      employees.findOne({Employee_ID:d}).exec(function(err,data){
+               if(data){
+                 res.send({message:'Success'});
+               }
+               else{
+               res.send({message:'fail'});
+               }
+      });
+    }
+
+
 exports = module.exports = controller;
 
 // db.empdetails.insert({

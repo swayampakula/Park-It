@@ -8,6 +8,7 @@ var webpackHotMiddleware = require('webpack-hot-middleware');
 var config = require('./webpack.config');
 var employee = require('./webserver/api/Employee/Employee.router');
 var lots = require('./webserver/api/Lots/Lots.router');
+var Search = require('./webserver/api/Search/Search.router')
 var app = express();
 var compiler = webpack(config);
 
@@ -31,6 +32,7 @@ db.once('open', function() {
 //Ruotes
 app.use('/employee', employee);
 app.use('/lots',lots);
+app.use('/search',Search)
 
 
 app.use(webpackDevMiddleware(compiler, {
@@ -50,10 +52,10 @@ app.use(webpackHotMiddleware(compiler));
 
 
 //Listening to port 8081
-app.listen(8081, '0.0.0.0', function(err, result) {
+app.listen(8000, '0.0.0.0', function(err, result) {
     if (err) {
         console.error("Error ", err);
     }
 
-    console.log("Server started at 8081");
+    console.log("Server started at 8000");
 });

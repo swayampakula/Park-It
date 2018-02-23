@@ -18,19 +18,24 @@ controller.getLot=function(req,res){
   controller.getCities=function(req,res){
     console.log("inside get");
       lots.find({}, function(err, data) {
-        console.log("inside get1");
-
         console.log();
         if (!err){
-          res.send(data[0].City);
+          var cityArr = []
+          for (var i = 0; i < data.length; i++) {
+            cityArr = data[i].City
+          }
+          res.send(cityArr);
         } else {throw err;}
     });
   }
   controller.getOffices=function(req,res){
   lots.findOne({City:req.params.city}).exec(function(err,data){
-          console.log(data);
            if(data){
-             res.send(data[0].Office);
+             var offArr = []
+             for (var i = 0; i < data.length; i++) {
+               offArr = data[i].Office
+             }
+             res.send(offArr);
            }
            else{
            res.send({message:'fail'});
@@ -41,7 +46,11 @@ controller.getLot=function(req,res){
   lots.findOne({City:req.params.city, Office:req.params.office}).exec(function(err,data){
           console.log(data);
            if(data){
-             res.send(data[0].Tower);
+             towArr = []
+             for (var i = 0; i < data.length; i++) {
+              towArr = data[i].Tower
+             }
+             res.send(towArr);
            }
            else{
              res.send({message:'fail'});

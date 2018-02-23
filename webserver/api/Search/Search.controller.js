@@ -1,32 +1,88 @@
 var controller={};
-var lots=require('./Lots.Model');
+var search=require('./Search.Model');
 
-// controller.getLot=function(req,res){
-//   var d= req.params.city;
-//   var e=req.params.office;
-//   var f=req.params.tower;
-//   lots.findOne({City:d, Office:e, Tower:f}).exec(function(err,data){
-//           console.log(data);
+controller.GetDataByEmployeeID=function(req,res){
+  console.log('into GetDataByEmployeeID')
+  var d= req.params.empID;
+  search.findOne({Employee_ID:d}).exec(function(err,data){
+           if(data){
+             res.send({message:'Success'});
+           }
+           else{
+           res.send({message:'fail'});
+           }
+  });
+}
+
+// controller.GetDataByVehicleNo=function(req,res){
+//   var d= req.params.Vehicle_Info.Vehicle_Number;
+//   search.findOne({Vehicle_Number:d}).exec(function(err,data){
 //            if(data){
-//              res.send(data.Slot);
+//              res.send({message:'Success'});
 //            }
 //            else{
 //            res.send({message:'fail'});
 //            }
-//        });
-//   }
+//   });
+// }
 
-  controller.postBooking=function(req,res){
-   var data= req.body;
-   res.send({message:'Success'});
- };
+// controller.GetDataBySlot=function(req,res){
+//   var d= req.params.Slot_Info.City;
+//   var e= req.params.Slot_Info.Office;
+//   var f= req.params.Slot_Info.Tower;
+//   var g= req.params.Slot_Info.Slot_Name;
+//   search.findOne({Slot_Info.City:d,Slot_Info.Office:e,Slot_Info.Tower:f,Slot_Info.Slot_Name:g}).exec(function(err,data){
+//            if(data){
+//              res.send({message:'Success'});
+//            }
+//            else{
+//            res.send({message:'fail'});
+//            }
+//   });
+// }
 
-  
+
 
 
 exports = module.exports = controller;
 
+// db.empdetails.insert({
+//   "Employee_ID":'353444',
+//   "Employee_Name":'Ramesh',
+//   "Employee_Email":'ramesh.n63@wipro.com',
+//   "Role":'Admin',
+//   "password":'ramesh@123',
+//   "Booking_Count": 0,
+//   "Vehicle_Info": {
+//     "Vehicle_Number": '',
+//     "Vehicle_Type": ''
+//   },
+//   "Slot_Info": {
+//     "City":'',
+//     "Office":'',
+//     "Tower":'',
+//     "Slot_Name" : ''
+//   }
+// })
 
+
+
+
+//
+// // controller.postEmployeeData=function(req,res){
+// //
+// //
+// //   var data= req.body;
+// //   console.log('post data react to server');
+// //   console.log(data);
+// //
+// //   res.send({message:'Hi data is received on server'});
+// //
+// //
+// // };
+//
+//
+//
 // controller.getEmployeeData=function(req,res){
 //
 //   console.log('Emp  api connected for get emp data');
