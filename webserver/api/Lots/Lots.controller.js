@@ -44,12 +44,12 @@ controller.getLot=function(req,res){
        });
   }
   controller.getTowers=function(req,res){
-  lots.findOne({City:req.params.city, Office:req.params.office}).exec(function(err,data){
+  lots.find({City:req.params.city, Office:req.params.office}).exec(function(err,data){
           console.log(data);
            if(data){
-             towArr = []
+             var towArr = []
              for (var i = 0; i < data.length; i++) {
-              towArr = data[i].Tower
+              towArr.push(data[i].Tower)
              }
              res.send(towArr);
            }
