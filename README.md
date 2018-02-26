@@ -1,12 +1,6 @@
-## React Boilerplate
+## Park It API CALLS
 
-Supports
-
-- Webpack
-- Material UI
-- Hot Module replacement
-- React Hotloading (persists state)
-- Recommended folder structure for a react.js webapp project 
+	It contains API calls for the mobile Application. All the data for the Application are fetchecd from this application.
 
 ### How to start running
 Run these commands
